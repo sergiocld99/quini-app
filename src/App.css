@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  color: white;
 }
 
 .App-header {
@@ -10,6 +11,17 @@
   align-items: start;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
   padding-inline: 30px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.quini-container {
+  background-color: rgb(42, 42, 87);
+  width: 95%;
+  border: solid blue 2px;
+  border-radius: 10px;
+  margin-block: 30px;
 }

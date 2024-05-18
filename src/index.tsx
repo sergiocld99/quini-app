@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { store } from './redux/Store';
+import { addQuini } from './redux/Actions';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,6 +14,10 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+store.dispatch(addQuini("Ciudad"))
+store.dispatch(addQuini("Provincia"))
+store.dispatch(addQuini("Córdoba"))
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
