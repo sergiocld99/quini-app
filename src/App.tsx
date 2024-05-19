@@ -25,10 +25,7 @@ function App() {
       data.forEach((sorteo, index) => {
         store.dispatch(addCabeza({
           quiniId: index % 6,
-          turno: {
-            nombre: Math.floor(index / 6),
-            cabeza: sorteo.numeros[0]
-          }
+          cabeza: sorteo.numeros[0]
         }))
       })
     })

@@ -1,9 +1,7 @@
-import Turno from "./Turno"
-
 type Quiniela = {
     id: number,
     nombre: string,
-    turnos: Turno[]
+    cabezas: number[]
 }
 
 export default Quiniela

@@ -20,27 +20,27 @@ export const reducer = createReducer(initialState, builder => {
         return {...state, quinielas: [...state.quinielas, {
             id: lastId++, 
             nombre: action.payload,
-            turnos: []
+            cabezas: []
         }]}
     }).addCase(actions.addCabeza, (state, action) => {
         return {...state, quinielas: state.quinielas.map(q => q.id !== action.payload.quiniId ? q : {
-            ...q, turnos: [...q.turnos, {...action.payload.turno}]
+            ...q, cabezas: [...q.cabezas, action.payload.cabeza]
         })}
     }).addCase(actions.cleanSorteos, state => {
-        return {...state, quinielas: state.quinielas.map(q => ({...q, turnos: []})) } 
+        return {...state, quinielas: state.quinielas.map(q => ({...q, cabezas: []})) } 
     }).addCase(actions.goToPreviousDay, state => {
         currDay--
         
         return { 
             fecha: formatTwoDigits(currMonth) + "-" + formatTwoDigits(currDay),
-            quinielas: state.quinielas.map(q => ({...q, turnos: []}))
+            quinielas: state.quinielas.map(q => ({...q, cabezas: []}))
          }
     }).addCase(actions.goToNextDay, state => {
         currDay++
 
         return { 
             fecha: formatTwoDigits(currMonth) + "-" + formatTwoDigits(currDay),
-            quinielas: state.quinielas.map(q => ({...q, turnos: []}))
+            quinielas: state.quinielas.map(q => ({...q, cabezas: []}))
          }
     })
 })

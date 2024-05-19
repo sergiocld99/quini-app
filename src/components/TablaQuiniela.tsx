@@ -1,5 +1,5 @@
 import Quiniela from "../models/Quiniela";
-import { getNombre } from "../models/NombresTurno";
+import { nombres } from "../models/NombresTurno";
 
 const formatNumber = (num: number, minDecimals = 4) => {
   let digits = num.toString();
@@ -19,16 +19,16 @@ const TablaQuiniela = (quini: Quiniela) => {
       <table>
         <thead>
           <tr>
-            {quini.turnos.map((t, index) => (
-              <th key={"nombre" + index}>{getNombre(t.nombre)}</th>
+            {nombres.map((n, index) => (
+              <th key={"nombre" + index}>{n}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           <tr>
-            {quini.turnos.map((t, index) => (
-              <td key={"cabeza" + index}>{formatNumber(t.cabeza)}</td>
-            ))}
+            {quini.cabezas.length ? quini.cabezas.map((cab, index) => (
+              <td key={"cabeza" + index}>{formatNumber(cab)}</td>
+            )) : nombres.map((n, index) => (<td key={"cabeza" + index}>----</td>)) }
           </tr>
         </tbody>
       </table>

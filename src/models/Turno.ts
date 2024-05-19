@@ -1,7 +1,7 @@
 import NombreTurno from "./NombresTurno";
 
 type Turno = {
-    nombre: NombreTurno
+    ordinal: NombreTurno
     cabeza: number
 }
 
