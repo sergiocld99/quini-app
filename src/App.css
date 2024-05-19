@@ -12,10 +12,28 @@
   justify-content: start;
   font-size: calc(10px + 2vmin);
   padding-inline: 30px;
+  user-select: none;
+}
+
+.App-header nav {
+  display: flex;
+  align-items: center;
+  min-height: 10vh;
+  gap: 30px;
+  margin-inline: 40px;
+  margin-top: 6px;
+}
+
+.App-header nav p {
+  font-size: 2vmin;
+}
+
+.App-header nav p:hover {
+  cursor: pointer;
 }
 
 .App-header .current-date {
-  width: 90%;
+  width: 75%;
   text-align: end;
   display: flex;
   justify-content: end;
@@ -23,7 +41,6 @@
 
 .App-header .current-date * {
   margin-inline: 10px;
-  user-select: none;
 }
 
 .App-header .current-date .date-nav-btn:hover {
