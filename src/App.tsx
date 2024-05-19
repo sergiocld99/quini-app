@@ -3,7 +3,7 @@ import './App.css';
 import { store } from './redux/Store';
 import TablaQuiniela from './components/TablaQuiniela';
 import ApiResponse from './api/ApiResponse';
-import { addCabeza, cleanSorteos, goToPreviousDay } from './redux/Actions';
+import { addCabeza, cleanSorteos, goToNextDay, goToPreviousDay } from './redux/Actions';
 
 function App() {
   const [quinis, setQuinis] = useState(store.getState().quinielas)
@@ -41,11 +41,9 @@ function App() {
           <b>Quini</b>
         </p>
         <div className='current-date'>
-          <p className='date-nav-btn'onClick={e => {
-            store.dispatch(goToPreviousDay())
-          }}>◀️</p>
+          <p className='date-nav-btn' onClick={e => store.dispatch(goToPreviousDay())}>◀️</p>
           <p><b>{date}</b></p>
-          <p className='date-nav-btn'>▶️</p>
+          <p className='date-nav-btn' onClick={e => store.dispatch(goToNextDay())}>▶️</p>
         </div>
       </header>
       <main>

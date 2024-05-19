@@ -1,5 +1,4 @@
 import { createReducer } from "@reduxjs/toolkit"
-import Quiniela from "../models/Quiniela"
 import * as actions from "./Actions"
 import DayResults from "../models/DayResults"
 
@@ -32,6 +31,13 @@ export const reducer = createReducer(initialState, builder => {
     }).addCase(actions.goToPreviousDay, state => {
         currDay--
         
+        return { 
+            fecha: formatTwoDigits(currMonth) + "-" + formatTwoDigits(currDay),
+            quinielas: state.quinielas.map(q => ({...q, turnos: []}))
+         }
+    }).addCase(actions.goToNextDay, state => {
+        currDay++
+
         return { 
             fecha: formatTwoDigits(currMonth) + "-" + formatTwoDigits(currDay),
             quinielas: state.quinielas.map(q => ({...q, turnos: []}))
