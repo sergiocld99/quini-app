@@ -3,15 +3,18 @@ import * as actions from "./Actions"
 import DayResults from "../models/DayResults"
 
 let lastId = 0
-let currDay = 19
-let currMonth = 5
+let currTime = new Date()
 
 const formatTwoDigits = (num: number) => {
     return (num < 10 ? '0' : '') + num
 }
 
+const getCurrDayCode = () => {
+    return formatTwoDigits(currTime.getMonth() + 1) + "-" + formatTwoDigits(currTime.getDate())   
+}
+
 const initialState: DayResults = {
-    fecha: formatTwoDigits(currMonth) + '-' + formatTwoDigits(currDay), 
+    fecha: getCurrDayCode(), 
     quinielas: []
 }
 
@@ -29,17 +32,17 @@ export const reducer = createReducer(initialState, builder => {
     }).addCase(actions.cleanSorteos, state => {
         return {...state, quinielas: state.quinielas.map(q => ({...q, cabezas: []})) } 
     }).addCase(actions.goToPreviousDay, state => {
-        currDay--
+        currTime.setDate(currTime.getDate() - 1)
         
         return { 
-            fecha: formatTwoDigits(currMonth) + "-" + formatTwoDigits(currDay),
+            fecha: getCurrDayCode(),
             quinielas: state.quinielas.map(q => ({...q, cabezas: []}))
          }
     }).addCase(actions.goToNextDay, state => {
-        currDay++
+        currTime.setDate(currTime.getDate() + 1)
 
         return { 
-            fecha: formatTwoDigits(currMonth) + "-" + formatTwoDigits(currDay),
+            fecha: getCurrDayCode(),
             quinielas: state.quinielas.map(q => ({...q, cabezas: []}))
          }
     })
