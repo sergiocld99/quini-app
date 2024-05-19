@@ -7,9 +7,11 @@ import TablaQuiniela from './components/TablaQuiniela';
 
 function App() {
   const [quinis, setQuinis] = useState(store.getState())
+  console.log(store.getState())
 
   store.subscribe(() => {
     setQuinis(store.getState())
+    console.log(store.getState())
   })
 
   return (

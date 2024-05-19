@@ -24,4 +24,39 @@ ul {
   border: solid blue 2px;
   border-radius: 10px;
   margin-block: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quini-container table {
+  width: 90%;
+  margin-bottom: 10px;
+  table-layout: fixed;
+}
+
+.quini-container th {
+  background-color: blue;
+  
+}
+
+.quini-container th:first-of-type {
+  border-radius: 10px 0 0 0;
+}
+
+.quini-container th:last-of-type {
+  border-radius: 0 10px 0 0;
+}
+
+.quini-container td {
+  border: solid blue 2px;
+  font-size: 20px;
+}
+
+.quini-container td:first-of-type {
+  border-radius: 0 0 0 10px;
+}
+
+.quini-container td:last-of-type {
+  border-radius: 0 0 10px 0;
 }
