@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import "./App.css";
 import DatePage from "./pages/DatePage";
 import { store } from "./redux/Store";
@@ -16,12 +16,19 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <header className="App-header">
-          <p>
-            <b>Quini</b>
-          </p>
+          <NavLink to={"/"} className="no-link">
+            <p className="home-btn">
+              <b>Quini</b>
+            </p>
+          </NavLink>
           <nav>
-            <p>¿Cuando salió?</p>
-            <p>Predictor</p>
+            <NavLink to={"/buscador"} className="no-link">
+              <p>¿Cuando salió?</p>
+            </NavLink>
+
+            <NavLink to={"/predictor"} className="no-link">
+              <p>Predictor</p>
+            </NavLink>
           </nav>
           <div className="current-date">
             <p
