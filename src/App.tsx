@@ -37,8 +37,9 @@ function App() {
             >
               ◀️
             </p>
-            <p>
-              <b>{date}</b>
+            <p className="date-text">
+              <b>{date.split(" ")[1]}</b>
+              <p className="day-of-week">{date.split(" ")[0]}</p>
             </p>
             <p
               className="date-nav-btn"

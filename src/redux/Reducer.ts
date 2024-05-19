@@ -4,13 +4,16 @@ import DayResults from "../models/DayResults"
 
 let lastId = 0
 let currTime = new Date()
+const dayNames = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"]
 
 const formatTwoDigits = (num: number) => {
     return (num < 10 ? '0' : '') + num
 }
 
 const getCurrDayCode = () => {
-    return formatTwoDigits(currTime.getMonth() + 1) + "-" + formatTwoDigits(currTime.getDate())   
+    const dayOfWeek = dayNames[currTime.getDay()]
+    const dayCode = formatTwoDigits(currTime.getMonth() + 1) + "-" + formatTwoDigits(currTime.getDate())
+    return dayOfWeek + " " + dayCode
 }
 
 const initialState: DayResults = {

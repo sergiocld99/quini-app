@@ -17,7 +17,7 @@ const DatePage = () => {
   useEffect(() => {
     // http is mandatory in order to access other port or website
     // CORS must be enabled in backend
-    fetch(`http://127.0.0.1:2100/${date}`)
+    fetch(`http://127.0.0.1:2100/${date.split(" ")[1]}`)
       .then((res) => res.json() as Promise<ApiResponse>)
       .then((data) => {
         console.log("Resultados obtenidos");
