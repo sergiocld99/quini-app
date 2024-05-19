@@ -1,18 +1,36 @@
-import React, { useEffect, useReducer, useState } from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { store } from './redux/Store';
-import { addQuini } from './redux/Actions';
 import TablaQuiniela from './components/TablaQuiniela';
+import ApiResponse from './api/ApiResponse';
+import { addCabeza, cleanSorteos } from './redux/Actions';
 
 function App() {
   const [quinis, setQuinis] = useState(store.getState())
-  console.log(store.getState())
 
   store.subscribe(() => {
     setQuinis(store.getState())
-    console.log(store.getState())
+    console.log("Store changed!")
   })
+
+  useEffect(() => {
+    // http is mandatory in order to access other port or website
+    // CORS must be enabled in backend
+    fetch('http://127.0.0.1:2100/').then((res) => res.json() as Promise<ApiResponse>).then((data) => {
+      console.log("Resultados obtenidos")
+      store.dispatch(cleanSorteos())
+
+      data.forEach((sorteo, index) => {
+        store.dispatch(addCabeza({
+          quiniId: index % 6,
+          turno: {
+            nombre: Math.floor(index / 6),
+            cabeza: sorteo.numeros[0]
+          }
+        }))
+      })
+    })
+  }, [])
 
   return (
     <div className="App">

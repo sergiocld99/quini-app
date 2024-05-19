@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { store } from './redux/Store';
 import { addCabeza, addQuini } from './redux/Actions';
-import NombreTurno from './models/NombresTurno';
 
 const addCabezas = (quiniId: number, cabezas: number[]) => {
   for (let i=0; i<cabezas.length; i++){
@@ -24,10 +23,10 @@ root.render(
 
 store.dispatch(addQuini("Ciudad"))
 store.dispatch(addQuini("Provincia"))
+store.dispatch(addQuini("Santa Fe"))
 store.dispatch(addQuini("Córdoba"))
-
-addCabezas(1, [4, 2634, 3190, 5343, 4637])
-addCabezas(2, [8940, 7900, 3467, 3556, 2640])
+store.dispatch(addQuini("Entre Ríos"))
+store.dispatch(addQuini("Mendoza"))
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

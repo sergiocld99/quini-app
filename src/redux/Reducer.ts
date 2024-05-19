@@ -8,13 +8,15 @@ let lastId = 0
 export const reducer = createReducer(initialState, builder => {
     builder.addCase(actions.addQuini, (state, action) => {
         return [...state, {
-            id: ++lastId, 
+            id: lastId++, 
             nombre: action.payload,
             turnos: []
         }]
     }).addCase(actions.addCabeza, (state, action) => {
-        return state.map(q => q.id != action.payload.quiniId ? q : {
+        return state.map(q => q.id !== action.payload.quiniId ? q : {
             ...q, turnos: [...q.turnos, {...action.payload.turno}]
         })
+    }).addCase(actions.cleanSorteos, state => {
+        return state.map(q => ({...q, turnos: []}))
     })
 })
