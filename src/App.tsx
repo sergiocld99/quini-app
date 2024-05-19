@@ -3,20 +3,22 @@ import './App.css';
 import { store } from './redux/Store';
 import TablaQuiniela from './components/TablaQuiniela';
 import ApiResponse from './api/ApiResponse';
-import { addCabeza, cleanSorteos } from './redux/Actions';
+import { addCabeza, cleanSorteos, goToPreviousDay } from './redux/Actions';
 
 function App() {
-  const [quinis, setQuinis] = useState(store.getState())
+  const [quinis, setQuinis] = useState(store.getState().quinielas)
+  const [date, setDate] = useState(store.getState().fecha)
 
   store.subscribe(() => {
-    setQuinis(store.getState())
+    setQuinis(store.getState().quinielas)
+    setDate(store.getState().fecha)
     console.log("Store changed!")
   })
 
   useEffect(() => {
     // http is mandatory in order to access other port or website
     // CORS must be enabled in backend
-    fetch('http://127.0.0.1:2100/').then((res) => res.json() as Promise<ApiResponse>).then((data) => {
+    fetch(`http://127.0.0.1:2100/${date}`).then((res) => res.json() as Promise<ApiResponse>).then((data) => {
       console.log("Resultados obtenidos")
       store.dispatch(cleanSorteos())
 
@@ -30,7 +32,7 @@ function App() {
         }))
       })
     })
-  }, [])
+  }, [date])
 
   return (
     <div className="App">
@@ -38,6 +40,13 @@ function App() {
         <p>
           <b>Quini</b>
         </p>
+        <div className='current-date'>
+          <p className='date-nav-btn'onClick={e => {
+            store.dispatch(goToPreviousDay())
+          }}>◀️</p>
+          <p><b>{date}</b></p>
+          <p className='date-nav-btn'>▶️</p>
+        </div>
       </header>
       <main>
         <ul>

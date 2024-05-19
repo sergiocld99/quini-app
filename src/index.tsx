@@ -4,13 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { store } from './redux/Store';
-import { addCabeza, addQuini } from './redux/Actions';
-
-const addCabezas = (quiniId: number, cabezas: number[]) => {
-  for (let i=0; i<cabezas.length; i++){
-    store.dispatch(addCabeza({quiniId, turno: {nombre: i, cabeza: cabezas[i]}}))
-  }
-}
+import { addQuini } from './redux/Actions';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

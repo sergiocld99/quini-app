@@ -1,8 +1,8 @@
 import Turno from "./Turno"
 
 type Quiniela = {
-    id: number
-    nombre: string
+    id: number,
+    nombre: string,
     turnos: Turno[]
 }
 

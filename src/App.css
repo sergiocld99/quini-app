@@ -7,11 +7,27 @@
   background-color: #282c34;
   min-height: 10vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: start;
-  justify-content: center;
+  justify-content: start;
   font-size: calc(10px + 2vmin);
   padding-inline: 30px;
+}
+
+.App-header .current-date {
+  width: 90%;
+  text-align: end;
+  display: flex;
+  justify-content: end;
+}
+
+.App-header .current-date * {
+  margin-inline: 10px;
+  user-select: none;
+}
+
+.App-header .current-date .date-nav-btn:hover {
+  cursor: pointer;
 }
 
 ul {
