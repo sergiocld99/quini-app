@@ -112,6 +112,17 @@ ul {
   border-radius: 0 0 10px 0;
 }
 
+.quini-container .th-best {
+  background-color: red;
+  border-color: red;
+}
+
+.quini-container .best-family {
+  font-weight: 700;
+  color: aqua;
+  border-color: red;
+}
+
 .Search-query {
   margin: 30px;
   display: flex;
@@ -133,7 +144,7 @@ ul {
 .Search-results {
   display: inline-grid;
   width: 90%;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .Search-results b {
