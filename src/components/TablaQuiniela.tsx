@@ -1,16 +1,6 @@
 import Quiniela from "../models/Quiniela";
 import { nombres } from "../models/NombresTurno";
-
-const formatNumber = (num: number, minDecimals = 4) => {
-  let digits = num.toString();
-  const zerosToAdd = minDecimals - digits.length;
-
-  for (let i = 0; i < zerosToAdd; i++) {
-    digits = "0" + digits;
-  }
-
-  return digits;
-};
+import { formatNumber } from "../utils/Utils";
 
 const TablaQuiniela = (quini: Quiniela) => {
   return (

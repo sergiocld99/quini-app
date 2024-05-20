@@ -4,6 +4,7 @@ import DatePage from "./pages/DatePage";
 import { store } from "./redux/Store";
 import { goToNextDay, goToPreviousDay } from "./redux/Actions";
 import { useState } from "react";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   const [date, setDate] = useState(store.getState().fecha);
@@ -32,7 +33,7 @@ function App() {
           </nav>
           <div className="current-date">
             <p
-              className="date-nav-btn"
+              className="date-nav-btn p-link"
               onClick={(e) => store.dispatch(goToPreviousDay())}
             >
               ◀️
@@ -42,7 +43,7 @@ function App() {
               <p className="day-of-week">{date.split(" ")[0]}</p>
             </p>
             <p
-              className="date-nav-btn"
+              className="date-nav-btn p-link"
               onClick={(e) => store.dispatch(goToNextDay())}
             >
               ▶️
@@ -51,6 +52,7 @@ function App() {
         </header>
         <Routes>
           <Route path="/" element={<DatePage />}></Route>
+          <Route path="/buscador" element={<SearchPage/>}></Route>
         </Routes>
       </div>
     </BrowserRouter>

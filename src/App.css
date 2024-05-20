@@ -8,6 +8,14 @@
   text-decoration: inherit;
 }
 
+.p-link {
+  user-select: none;
+}
+
+.p-link:hover {
+  cursor: pointer;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 10vh;
@@ -17,11 +25,6 @@
   justify-content: start;
   font-size: calc(10px + 2vmin);
   padding-inline: 30px;
-  user-select: none;
-}
-
-.App-header .home-btn:hover {
-  cursor: pointer;
 }
 
 .App-header nav {
@@ -35,10 +38,7 @@
 
 .App-header nav p {
   font-size: 2vmin;
-}
-
-.App-header nav p:hover {
-  cursor: pointer;
+  width: max-content;
 }
 
 .App-header .current-date {
@@ -50,10 +50,6 @@
 
 .App-header .current-date * {
   margin-inline: 10px;
-}
-
-.App-header .current-date .date-nav-btn:hover {
-  cursor: pointer;
 }
 
 .App-header .current-date .date-text {
@@ -114,4 +110,62 @@ ul {
 
 .quini-container td:last-of-type {
   border-radius: 0 0 10px 0;
+}
+
+.Search-query {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Search-query input {
+  width: 70px;
+  font-size: 30px;
+  text-align: center;
+  margin-inline: 20px;
+}
+
+.Search-query .search-btn {
+  font-size: 30px;
+}
+
+.Search-results {
+  display: inline-grid;
+  width: 90%;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.Search-results b {
+  font-size: 30px;
+}
+
+.res-container {
+  background-color: rgb(42, 42, 87);
+  border: solid blue 2px;
+  width: max-content;
+  border-radius: 10px;
+  margin-block: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-inline: 20px;
+  gap: 30px;
+}
+
+.res-container-cabeza {
+  background-color: rgb(87, 42, 42);
+  border: solid red 2px;
+  width: max-content;
+  border-radius: 10px;
+  margin-block: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-inline: 20px;
+  gap: 30px;
+}
+
+.res-container p {
+  text-align: start;
 }
