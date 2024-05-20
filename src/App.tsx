@@ -5,6 +5,7 @@ import { store } from "./redux/Store";
 import { goToNextDay, goToPreviousDay } from "./redux/Actions";
 import { useState } from "react";
 import SearchPage from "./pages/SearchPage";
+import PredictorPage from "./pages/PredictorPage";
 
 function App() {
   const [date, setDate] = useState(store.getState().fecha);
@@ -53,6 +54,7 @@ function App() {
         <Routes>
           <Route path="/" element={<DatePage />}></Route>
           <Route path="/buscador" element={<SearchPage/>}></Route>
+          <Route path="/predictor" element={<PredictorPage/>}></Route>
         </Routes>
       </div>
     </BrowserRouter>

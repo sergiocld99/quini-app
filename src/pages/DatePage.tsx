@@ -3,6 +3,7 @@ import { store } from "../redux/Store";
 import { addCabeza, cleanSorteos } from "../redux/Actions";
 import ApiResponse from "../api/ApiResponse";
 import TablaQuiniela from "../components/TablaQuiniela";
+import { getFamily, getIndexOfMaxValue } from "../utils/Utils";
 
 const DatePage = () => {
   const [quinis, setQuinis] = useState(store.getState().quinielas);
@@ -33,22 +34,12 @@ const DatePage = () => {
           );
 
           // agregar a familia
-          let num = sorteo.numeros[0] % 100
-          let unidad = num % 10
-          let decena = Math.floor(num / 10)
-          let fam = unidad < decena ? (unidad * 10 + decena) : num
-          familias[fam] += (5 - index % 6)
+          let fam = getFamily(sorteo.numeros[0])
+          familias[fam] += (6 - index % 6)
         });
 
         // set best family
-        let best = 0
-        let max = familias[0]
-        for (let i=1; i<familias.length; i++){
-          if (familias[i] > max){
-            max = familias[i]
-            best = i
-          }
-        }
+        let best = getIndexOfMaxValue(familias)
         setBestFamily([best, (best % 10) * 10 + Math.floor(best / 10)])
         console.log(best + " is best family")
       });
